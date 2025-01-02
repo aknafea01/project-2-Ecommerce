@@ -22,7 +22,7 @@ html {
   --secondary-color: #78b5f2;
   --accent-color: #f2738a;
 
-  --gray-color:#6c757d;
+  --gray-color: #6c757d;
   --white-color: #ebf2f9;
   --black-color: #060d14;
   --white-shade: #f0f5f9;
@@ -512,6 +512,10 @@ main .text .btn:hover a {
   width: 100%;
   height: 60vh;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-evenly;
 }
 .trend > .text {
   width: 90%;
@@ -519,13 +523,10 @@ main .text .btn:hover a {
   display: flex;
   align-items: center;
   padding: 20px;
-  margin-bottom: 20px;
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .trend .text h2 {
   width: 70%;
+  color: var(--primary-color);
 }
 .trend .text ul {
   width: 30%;
@@ -636,7 +637,7 @@ main .text .btn:hover a {
   opacity: 0;
 }
 .trend .container > .card .items li a {
-  color: var(--primary-color);
+  color: var(--gray-color);
   font-size: 25px;
   line-height: 50px;
 }
@@ -662,7 +663,7 @@ main .text .btn:hover a {
   background-color: #e7e7e7;
 }
 .trend .container > .card .items li:hover a {
-  color: var(--gradiant-blue);
+  color: var(--primary-color);
   display: block;
 }
 .trend .container > .card > .text {
@@ -747,10 +748,12 @@ main .text .btn:hover a {
 }
 .customer-testimonial ul li:hover > a > i {
   color: var(--primary-color);
+  opacity: 1;
 }
 .customer-testimonial ul li i {
   color: var(--gray-color);
   transition: var(--main-transition);
+  opacity: 0.5;
   font-size: 24px;
 }
 .customer-testimonial > a {
@@ -803,5 +806,178 @@ main .text .btn:hover a {
   font-size: 25px;
 }
 .customer-testimonial .container > div p {
-color: var(--gray-color);
+  color: var(--gray-color);
+}
+/*************************************************/
+.suggestion {
+  width: 100%;
+  height: 65vh;
+  background-color: var(--theme-bg-color);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
+}
+.suggestion h2 {
+  font-size: 32px;
+  color: var(--primary-color);
+  width: 90%;
+  text-align: center;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.suggestion .grand-container {
+  width: calc(90% + 60px);
+  height: calc(100% - 120px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.suggestion .grand-container > a i {
+  font-size: 25px;
+  color: var(--secondary-color);
+  transition: var(--main-transition);
+}
+.suggestion .grand-container > a:hover i {
+  color: var(--primary-color);
+}
+.suggestion .container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 100%;
+  width: calc(100% - 60px);
+  position: relative;
+}
+.suggestion .container > .card {
+  width: 24%;
+  height: 100%;
+}
+.suggestion .container > .card .image {
+  width: 100%;
+  height: 75%;
+  border-radius: var(--main-raduis) var(--main-raduis) 0 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+.suggestion .container > .card .image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-100%);
+  border-radius: var(--main-raduis);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.6;
+  transition: calc(var(--main-transition) + 0.5s);
+  background-color: var(--white-shade);
+}
+.suggestion .container > .card .image:hover::before {
+  transform: translateY(-0%);
+  opacity: 1;
+}
+.suggestion .container > .card .image ul {
+  position: absolute;
+  display: flex;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background-color: #ffffff;
+  width: 60%;
+  height: 50px;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: calc(var(--main-transition) + 0.5s);
+  opacity: 0;
+}
+.suggestion .container > .card:hover .image ul {
+  transform: translate(-50%, -60px);
+  opacity: 1;
+}
+.suggestion .container > .card:hover h3 {
+  color: var(--gradiant-blue);
+}
+.suggestion .container > .card .image ul i {
+  font-size: 25px;
+  color: var(--gray-color);
+  transition: var(--main-transition);
+  opacity: 0.6;
+}
+.suggestion .container > .card .image ul li a {
+  display: block;
+}
+.suggestion .container > .card .image ul li {
+  line-height: 50px;
+  width: calc(100% / 3);
+  text-align: center;
+}
+.suggestion .container > .card .image ul li:hover {
+  background-color: #e7e7e7;
+}
+.suggestion .container > .card .image ul li:hover a i {
+  color: var(--primary-color);
+  opacity: 1;
+}
+.suggestion .container > .card .image ul li:first-child {
+  border-radius: var(--main-raduis) 0 0 var(--main-raduis);
+}
+.suggestion .container > .card .image ul li:last-child {
+  border-radius: 0 var(--main-raduis) var(--main-raduis) 0;
+}
+.suggestion .text {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 25%;
+}
+.suggestion .text h3 {
+  color: var(--primary-color);
+  font-size: 22px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: var(--main-transition);
+}
+.suggestion .text p {
+  text-align: center;
+  font-size: 20px;
+  color: #28a745;
+}
+.suggestion .text p del {
+  color: var(--gray-color);
+}
+.suggestion .container > .card .image-1 {
+  background-image: url(../images/bg.png);
+}
+.suggestion .container > .card .image-1::before {
+  background-image: url(../images/coat.png);
+}
+.suggestion .container > .card .image-2 {
+  background-image: url(../images/jeans.png);
+}
+.suggestion .container > .card .image-2::before {
+  background-image: url(../images/belt.png);
+}
+.suggestion .container > .card .image-3 {
+  background-image: url(../images/watch-2.png);
+}
+.suggestion .container > .card .image-3::before {
+  background-image: url(../images/watch-strap.png);
+}
+.suggestion .container > .card .image-4 {
+  background-image: url(../images/watch-3.png);
+}
+.suggestion .container > .card .image-4::before {
+  background-image: url(../images/watch-4.png);
 }
