@@ -13,22 +13,32 @@ html {
   --main-btn-raduis: 10px;
   --main-raduis: 20px;
 
-  --gradiant-pink: #f5805c;
-  --gradiant-maj: #a791f0;
-  --gradiant-blue: #88a3b9;
+  --gradiant-pink: #e100ff;
+  --gradiant-maj: #7146ff;
+  --gradiant-blue: #008cff;
 
   --theme-bg-color: #f8f9fa;
   --primary-color: #254565;
   --secondary-color: #78b5f2;
   --accent-color: #f2738a;
 
+  --gray-color:#6c757d;
   --white-color: #ebf2f9;
-  --black-color: #060d15;
-  --white-shade:#F0F5F9;
+  --black-color: #060d14;
+  --white-shade: #f0f5f9;
 }
 body {
   background-color: var(--theme-bg-color);
   font-family: 'Roboto', serif;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(-150px);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 ul {
   list-style: none;
@@ -37,7 +47,7 @@ a {
   text-decoration: none;
 }
 .container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 .btn {
@@ -117,6 +127,23 @@ a {
   animation-timing-function: linear;
   width: fit-content;
 }
+.text-shine {
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--primary-color),
+    #ffffff,
+    var(--primary-color),
+    var(--primary-color)
+  );
+  background-size: 200%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation-name: gradiant-text;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
 @keyframes gradiant-text {
   to {
     background-position: 200%;
@@ -142,7 +169,7 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  padding: 2px;
+  padding: 3px;
   background-image: conic-gradient(
     from var(--angle),
     var(--gradiant-blue) 50%,
@@ -169,6 +196,8 @@ header {
   grid-template-areas: 'logo . . links links links links links links links .  icons icons icons';
   padding: 0 40px;
   align-items: center;
+  position: relative;
+  z-index: 100;
 }
 .logo {
   color: var(--primary-color);
@@ -337,6 +366,8 @@ header .icons li:last-of-type:hover::after {
   align-items: center;
   gap: 1px;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 .sub-header h2 {
   font-size: 20px;
@@ -415,9 +446,9 @@ main .text .btn:hover a {
 .collection .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: calc(100% - 60px);
-  gap: 10px;
+  gap: 20px;
 }
 .collection .container > .card {
   width: 33%;
@@ -466,23 +497,7 @@ main .text .btn:hover a {
   margin-bottom: 10px;
   color: var(--black-color);
 }
-.collection .container > .card .text h3 span {
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--primary-color),
-    #ffffff,
-    var(--primary-color),
-    var(--primary-color)
-  );
-  background-size: 200%;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation-name: gradiant-text;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
+
 .collection .container > .card .text a {
   font-family: 'Inter', serif;
   color: var(--accent-color);
@@ -496,17 +511,18 @@ main .text .btn:hover a {
 .trend {
   width: 100%;
   height: 60vh;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
+  position: relative;
 }
 .trend > .text {
-  width: 98%;
+  width: 90%;
   height: 60px;
   display: flex;
   align-items: center;
   padding: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .trend .text h2 {
   width: 70%;
@@ -538,10 +554,32 @@ main .text .btn:hover a {
 }
 .trend .container {
   display: flex;
-  width: 98%;
-  justify-content: space-evenly;
-  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
   height: calc(100% - 120px);
+  position: relative;
+}
+.trend .fa-chevron-right {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: var(--secondary-color);
+  transition: var(--main-transition);
+}
+.trend .fa-chevron-left {
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  transform: translate(50%, -50%);
+  font-size: 30px;
+  color: var(--secondary-color);
+  transition: var(--main-transition);
+}
+.trend .fa-chevron-right:hover,
+.trend .fa-chevron-left:hover {
+  color: var(--primary-color);
 }
 .trend .container > .card {
   width: 24%;
@@ -557,7 +595,6 @@ main .text .btn:hover a {
   position: relative;
   transition: var(--main-transition);
   transform-style: preserve-3d;
-  
 }
 .trend .container > .card .face,
 .trend .container > .card .back {
@@ -572,13 +609,13 @@ main .text .btn:hover a {
   background-color: var(--white-shade);
   backface-visibility: hidden;
   border-radius: var(--main-raduis) var(--main-raduis) 0 0;
+  background-repeat: no-repeat;
   overflow: hidden;
 }
-.trend .container > .card .face {
+.trend .container > .card .face-1 {
   background-image: url(../images/blaser.png);
-
 }
-.trend .container > .card .back {
+.trend .container > .card .back-1 {
   background-image: url(../images/tie.png);
   transform: rotateY(-180deg);
   z-index: -1;
@@ -604,15 +641,14 @@ main .text .btn:hover a {
   line-height: 50px;
 }
 .trend .container > .card:hover .items {
-  transform: translate(-50%,-50px);
+  transform: translate(-50%, -80px);
   opacity: 1;
 }
 .trend .container > .card .items li {
   width: calc(100% / 3);
   text-align: center;
-
 }
-.trend .container > .card .items li:nth-child(1){
+.trend .container > .card .items li:nth-child(1) {
   border-radius: var(--main-raduis) 0 0 var(--main-raduis);
 }
 .trend .container > .card .items li:nth-child(2) {
@@ -623,10 +659,11 @@ main .text .btn:hover a {
 }
 
 .trend .container > .card .items li:hover {
-  background-color: var(--secondary-color);
+  background-color: #e7e7e7;
 }
 .trend .container > .card .items li:hover a {
-  color: #fa5320;
+  color: var(--gradiant-blue);
+  display: block;
 }
 .trend .container > .card > .text {
   all: unset;
@@ -641,19 +678,130 @@ main .text .btn:hover a {
 }
 .trend .container > .card > .text h3 {
   font-size: 21px;
-  font-weight: 400;
+  font-weight: 800;
   text-transform: uppercase;
   margin-bottom: 5px;
   color: var(--primary-color);
+  transition: var(--main-transition);
 }
 .trend .container > .card:hover > .text h3 {
-  color: var(--secondary-color);
+  color: var(--gradiant-blue);
 }
 .trend .container > .card > .text p {
   font-size: 18px;
   font-weight: 400;
-  color: #165899;
+  color: #28a745;
 }
 .trend .container > .card > .text p del {
-  text-decoration: line-through #2c3947 2px;
+  text-decoration: line-through #6c757d 2px;
+  color: var(--gray-color);
+}
+.trend .container > .card .face-1 {
+  background-image: url(../images/suit-1.png);
+}
+.trend .container > .card .back-1 {
+  background-image: url(../images/tie-1.png);
+  transform: rotateY(-180deg);
+  z-index: -1;
+}
+.trend .container > .card .face-2 {
+  background-image: url(../images/Bag.png);
+}
+.trend .container > .card .back-2 {
+  background-image: url(../images/sun-glasses.png);
+  transform: rotateY(-180deg);
+  z-index: -1;
+}
+.trend .container > .card .face-3 {
+  background-image: url(../images/shirt.png);
+}
+.trend .container > .card .back-3 {
+  background-image: url(../images/shoe-1.png);
+  transform: rotateY(-180deg);
+  z-index: -1;
+}
+.trend .container > .card .face-4 {
+  background-image: url(../images/watch.png);
+}
+.trend .container > .card .back-4 {
+  background-image: url(../images/wallet.png);
+  transform: rotateY(-180deg);
+  z-index: -1;
+}
+/*************************************************/
+.customer-testimonial {
+  width: 100%;
+  height: 35vh;
+  background-color: #c3d2e2;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.customer-testimonial ul {
+  display: flex;
+}
+.customer-testimonial ul li {
+  display: flex;
+  margin: 0 10px;
+}
+.customer-testimonial ul li:hover > a > i {
+  color: var(--primary-color);
+}
+.customer-testimonial ul li i {
+  color: var(--gray-color);
+  transition: var(--main-transition);
+  font-size: 24px;
+}
+.customer-testimonial > a {
+  color: var(--gradiant-blue);
+  transition: var(--main-transition);
+}
+.customer-testimonial > a:hover {
+  color: var(--primary-color);
+}
+.customer-testimonial > a > i {
+  font-size: 30px;
+}
+.customer-testimonial .container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 80%;
+  width: 60%;
+  margin: 0;
+}
+.customer-testimonial .container h2 {
+  font-family: 'Inter', serif;
+  color: var(--black-color);
+  font-size: 32px;
+}
+.customer-testimonial .container p {
+  max-width: 500px;
+  font-size: 20px;
+  color: var(--primary-color);
+}
+.customer-testimonial .container > div {
+  display: flex;
+  width: 350px;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.customer-testimonial .container > div img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.customer-testimonial .container > div {
+  text-align: left;
+}
+.customer-testimonial .container > div h4 {
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  font-size: 25px;
+}
+.customer-testimonial .container > div p {
+color: var(--gray-color);
 }
