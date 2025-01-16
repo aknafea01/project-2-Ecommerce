@@ -236,12 +236,11 @@ header .icons {
 }
 header .icons li {
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-
 }
 header > nav > ul > li > a,
 header > ul > li > a {
@@ -347,7 +346,6 @@ header > nav > ul > li.pages .menu ul a {
   transition: var(--main-transition);
   font-size: 16px;
   transition: var(--main-transition);
-  
 }
 header > nav > ul > li.pages .menu ul a:hover {
   color: var(--accent-color);
@@ -373,10 +371,10 @@ header .icons li:last-of-type::after {
   background-color: var(--primary-color);
   color: var(--white-color);
   transition: var(--main-transition);
-  transform: translate(-50%,-3px);
+  transform: translate(-50%, -3px);
 }
 header .icons li:last-of-type:hover::after {
-  transform: translate(-50%,-5px);
+  transform: translate(-50%, -5px);
 }
 /******************************************************/
 .sub-header {
@@ -551,7 +549,6 @@ main .text .btn:hover a {
   margin: auto;
   height: 100%;
   transition: var(--main-transition);
-
 }
 .collection .container > .card:hover .image {
   scale: 1.1;
@@ -1149,10 +1146,10 @@ main .text .btn:hover a {
   color: var(--gradiant-blue);
 }
 .news .container > .card .image-1 {
-  background-image: url(../images/watch-5.jpg);
+  background-image: url(../images/vr.jpg);
 }
 .news .container > .card .image-2 {
-  background-image: url(../images/vr.jpg);
+  background-image: url(../images/watch-5.jpg);
 }
 .news .container > .card .image-3 {
   background-image: url(../images/vr-2.jpg);
@@ -1238,18 +1235,18 @@ main .text .btn:hover a {
 /**********************************************/
 footer {
   width: 100%;
-  height: 70vh;
-  background-color: #212529;
+  height: 61vh;
+  background-color: #2e3741;
   display: grid;
-  padding: 60px;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: 1fr 1px 3fr 1px 1fr;
+  padding: 40px 40px 20px;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 1fr 1px 8fr 1px 50px;
   grid-template-areas:
-    'text text . input input input . links'
-    'hr hr hr hr hr hr hr hr'
-    'logo . . . links-1 links-2 links-3 links-4  '
-    'hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2'
-    '. .  copy copy copy copy copy . ';
+    'text text text . input input input input . links '
+    'hr hr hr hr hr hr hr hr hr hr'
+    'logo . links-1 links-1 links-2 links-2 links-3  links-3 links-4  links-4 '
+    'hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2'
+    '. .  copy copy copy copy copy copy  . .';
   gap: 10px;
 }
 footer .text {
@@ -1258,6 +1255,7 @@ footer .text {
   display: flex;
   justify-content: space-evenly;
   flex-flow: column wrap;
+  align-items: flex-start;
 }
 footer .text h2 {
   text-transform: uppercase;
@@ -1321,7 +1319,7 @@ footer .input input:focus::placeholder {
   60%,
   100% {
     transform: translateX(calc(-200% - 5px)) translateY(-200%);
-    color: rgba(255, 0, 0, 0.747);
+    color: #dc4984;
   }
   1%,
   3%,
@@ -1381,27 +1379,32 @@ footer .input input:focus + span::before {
   display: none;
 }
 footer .input input:invalid {
-  color: rgb(145, 10, 10);
+  color: #dc4984;
 }
 footer .input .btn {
   width: fit-content;
   padding: 0 var(--main-padding);
-  background: rgb(182, 2, 2);
+  background-color: #dc4984;
   transition: var(--main-transition);
+  position: relative;
 }
+
 footer .input .btn:hover {
   scale: 1.1;
 }
 footer .input .btn a {
   font-size: 18px;
-  color: #ffff;
+  color: #f3eeee;
 }
 footer .links {
   grid-area: links;
+  display: flex;
+  align-items: center;
 }
 footer .links ul {
   display: flex;
   justify-content: space-evenly;
+  gap: 10px;
 }
 footer .links ul i {
   font-size: 25px;
@@ -1453,14 +1456,34 @@ footer .links-G a {
   color: #b3b1b1;
   font-size: 15px;
   transition: var(--main-transition);
+  position: relative;
+}
+footer .links-G a::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -1px;
+  height: 1px;
+  width: 0%;
+  background-color: var(--accent-color);
+  transition: var(--main-transition);
 }
 footer .links-G a:hover {
   color: var(--accent-color);
-  margin-left: 10px;
+  margin-left: 2px;
+}
+footer .links-G a:hover::before {
+  width: 100%;
+}
+footer .links-G {
+  padding-left: 30px;
 }
 footer .copy {
   grid-area: copy;
   color: #b1bdc7;
+  display: flex;
+  align-items: center;
 }
 footer .copy i {
   margin: 0 20px;
