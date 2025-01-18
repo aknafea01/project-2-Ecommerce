@@ -52,23 +52,22 @@ a {
 }
 .btn {
   width: 130px;
-  height: 45px;
+  padding: 13px 30px;
+  display: inline-block;
   border: none;
   border-radius: var(--main-btn-raduis);
   text-align: center;
 }
+
 .btn:nth-last-of-type(odd) {
   background-color: var(--primary-color);
-}
-.btn:nth-last-of-type(odd) a {
   color: var(--white-color);
 }
 .btn:nth-last-of-type(even) {
   background-color: var(--secondary-color);
-}
-.btn:nth-last-of-type(even) a {
   color: var(--black-color);
 }
+
 .btn-gradiant {
   position: relative;
   background-color: var(--theme-bg-color);
@@ -507,8 +506,6 @@ main .text .btn {
 main .text .btn:hover {
   transform: translateY(-2px);
   background-color: var(--accent-color);
-}
-main .text .btn:hover a {
   color: var(--black-color);
 }
 /**********************************************/
@@ -1267,14 +1264,15 @@ footer .text p {
 footer .input {
   grid-area: input;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 13px;
   position: relative;
   height: fit-content;
   width: 100%;
+  text-align: center;
 }
 footer .input input {
-  flex-grow: 5;
+  width: 60%;
   height: 45px;
   border: none;
   outline: none;
@@ -1383,20 +1381,97 @@ footer .input input:invalid {
   color: #dc4984;
 }
 footer .input .btn {
-  width: fit-content;
-  padding: 0 var(--main-padding);
-  background-color: #dc4984;
+  background-color: var(--gray-color);
   transition: var(--main-transition);
   position: relative;
-}
-
-footer .input .btn:hover {
-  scale: 1.06;
-}
-footer .input .btn a {
   font-size: 18px;
   color: #f3eeee;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation-name: btn-wide;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  animation-iteration-count: 1;
+  padding: 5px 10px ;
 }
+footer .input .btn::before{
+  content: '';
+  position: absolute;
+  font-family: 'Roboto', serif,'Font Awesome 6 free';
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  font-weight:600;
+  background-color: #dc49849c;
+  border-radius: var(--main-btn-raduis);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-spacing: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  animation-name:sub ;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+footer .input .btn:focus {
+  animation-play-state: running;
+}
+@keyframes btn-wide {
+  30% {
+    padding: 5px 80px;
+  }
+  100% {
+    padding: 5px 80px;
+  }
+}
+footer .input .btn:focus::before {
+  
+  animation-play-state: running;
+  
+  
+}
+@keyframes sub {
+  0% {
+    width: 0%;
+      background-color: #dc4984;
+      color: var(--white-color);
+  }
+  2% {
+    width: 10%;
+      background-color: #dc4984;
+      color: var(--white-color);
+  }
+  30% {
+    width: 90%;
+    background-color: #dc4984;
+    color: var(--white-color);
+    content: '\f0f3 '  ' subscribed' ' \f078' ; 
+  }
+  70% {
+    width: 100%;
+      background-color: #43474b;
+        
+  }
+  99% {
+      background-color: #43474b;
+        content: '\f0f3 '  ' subscribed' ' \f078' ; 
+  }
+  100% {
+    width: 100%;
+      background-color: #43474b;
+        content: '\f0f3 '  ' subscribed' ' \f078' ; 
+  }
+}
+
 footer .links {
   grid-area: links;
   display: flex;
