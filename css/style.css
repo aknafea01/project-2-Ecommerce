@@ -3,6 +3,22 @@
   margin: 0;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  width: 8px;
+
+}
+::-webkit-scrollbar-track {
+  background: #254565;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  transition: var(--main-transition);
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:var(--accent-color);
+}
 html {
   scroll-behavior: smooth;
 }
@@ -211,7 +227,7 @@ header {
   height: 70px;
   display: grid;
   grid-template-columns: 50px repeat(12, 1fr);
-  grid-template-areas: 'logo . . links links links links links links links .  icons icons icons';
+  grid-template-areas: 'logo logo logo . links links links links links links links  . icons icons';
   padding: 0 40px;
   align-items: center;
   position: relative;
@@ -221,14 +237,29 @@ header {
   color: var(--primary-color);
   font-size: 40px;
   grid-area: logo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.logo h1 {
+  font-size: 26px;
+  font-weight: 9000;
+}
+.logo h1 span {
+  font-weight: 300;
 }
 nav {
   grid-area: links;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 nav > ul,
 header .icons {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 header .icons {
   grid-area: icons;
@@ -393,13 +424,17 @@ header .icons li:last-of-type:hover::after {
   color: var(--white-color);
   width: fit-content;
 }
-.sub-header a {
-  font-size: 20px;
+.sub-header span {
   margin-left: 10px;
   text-align: center;
   width: 100px;
+}
+.sub-header a {
+  font-size: 20px;
   transition: var(--main-transition);
   color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 2px;
 }
 .sub-header a:hover {
   letter-spacing: 2px;
@@ -1241,7 +1276,7 @@ footer {
   grid-template-areas:
     'text text text . input input input input . links '
     'hr hr hr hr hr hr hr hr hr hr'
-    'logo . links-1 links-1 links-2 links-2 links-3  links-3 links-4  links-4 '
+    'logo logo links-1 links-1 links-2 links-2 links-3  links-3 links-4  links-4 '
     'hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2 hr-2'
     '. .  copy copy copy copy copy copy  . .';
   gap: 10px;
